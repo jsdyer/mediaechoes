@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Find old software, CD-ROM collections, Flash games and digital media in the Internet Archive.">
+  <meta name="theme-color" content="#17201c">
+  <title>Media Echoes · CoolCode</title>
+  <link rel="stylesheet" href="./style.css">
+  <script type="module" src="./app.mjs"></script>
+</head>
+<body>
+  <a class="skip" href="#search">Skip to archive search</a>
+  <header class="masthead"><div class="site"><a class="brand" href="https://coolcode.ca/"><span aria-hidden="true">[cc]</span>CoolCode.ca</a><nav aria-label="Help"><a href="#sources">About the search</a></nav></div></header>
+  <section class="hero" aria-labelledby="title"><div class="site">
+    <p class="eyebrow">Digital media archive</p>
+    <h1 id="title">Media Echoes</h1>
+    <p>Search Internet Archive records for old software, CD-ROMs, Flash games, trailers and other digital media. Follow a surviving title or preview to the original archive item.</p>
+  </div></section>
+  <main class="site" id="search">
+    <section class="panel" aria-label="Search archive metadata">
+      <form id="search-form" role="search">
+        <label for="query">Title, creator, or subject</label>
+        <div class="search-row"><input type="search" id="query" maxlength="180" autocomplete="off" placeholder="Try &quot;encyclopedia&quot;, &quot;NFB&quot; or &quot;Flash game&quot;"><button class="primary" type="submit">Search archive</button></div>
+        <div class="filters">
+          <div><label for="scope">Collection or media type</label><select id="scope"><option value="all">Software, video and images</option><option value="software">Software and games</option><option value="flash">Flash software library</option><option value="cdrom">CD-ROM software</option><option value="movies">Video and trailers</option><option value="images">Images</option></select></div>
+          <div><label for="era">Catalogue date</label><select id="era"><option value="all">Any date</option><option value="through1989">Through 1989</option><option value="1990s">1990–1999</option><option value="2000s">2000–2009</option><option value="2010s">2010–2019</option><option value="since2020">2020 onward</option></select></div>
+          <div><label for="sort">Sort by</label><select id="sort"><option value="relevance">Relevance</option><option value="views">Most viewed</option><option value="oldest">Earliest catalogue date</option><option value="newest">Latest catalogue date</option></select></div>
+        </div>
+        <p class="fine">Use quotes for a phrase. A catalogue date can differ from the original release date; date filters omit undated items.</p>
+      </form>
+      <div class="preset-bar" aria-label="Search suggestions"><span>Explore</span><button class="pill" type="button" data-scope="flash">Flash library</button><button class="pill" type="button" data-scope="cdrom" data-era="1990s">1990s CD-ROMs</button><button class="pill" type="button" data-scope="software" data-query="Canada">Canada-related software</button><button class="pill" type="button" data-scope="movies" data-query="&quot;game trailer&quot;">Game trailers</button></div>
+    </section>
+    <p id="status" class="status" role="status" aria-live="polite">Try a collection above or search for a title you remember.</p>
+    <div id="result-actions" class="results-head" hidden><h2 id="results-heading">Archive matches</h2><a id="archive-search" target="_blank" rel="noopener noreferrer">Open search on Internet Archive ↗</a></div>
+    <section id="results" class="media-grid" aria-labelledby="results-heading"></section>
+    <nav id="paging" class="pagination" aria-label="Result pages" hidden><button class="secondary" id="previous" type="button">Previous</button><span id="page-label"></span><button class="secondary" id="next" type="button">Next</button></nav>
+    <noscript><p class="empty">Turn on JavaScript to search here, or use <a href="https://archive.org/advancedsearch.php">Internet Archive advanced search</a>.</p></noscript>
+    <aside class="panel source" id="sources"><h2>About these records</h2><p>Search, previews and item metadata are supplied live by the <a href="https://archive.org/">Internet Archive</a>. Search terms go to the Archive. Results reflect its catalogue metadata, and access to a file depends on the item.</p><p>Use an item's original page for its viewer, available files and rights information. A matching record can be a later upload, a rerelease or an incomplete copy. Canada-related results match catalogue text.</p></aside>
+  </main>
+  <dialog id="details" aria-labelledby="detail-title"><form method="dialog" class="dialog-controls"><button class="secondary" type="submit" aria-label="Close item details">Close</button></form><div id="detail-body"></div></dialog>
+  <footer><div class="site"><a href="https://coolcode.ca/">CoolCode.ca</a><a href="https://github.com/jsdyer/mediaechoes">Application source on GitHub ↗</a></div></footer>
+</body>
+</html>
