@@ -1,0 +1,22 @@
+{
+  "id": "mediaechoes",
+  "title": "Media Echoes",
+  "description": "Pinpoint old software, Flash projects and media by title, creator, collection, year and exclusions.",
+  "category": "media",
+  "tags": [
+    "software",
+    "archival",
+    "cd-rom",
+    "web",
+    "games"
+  ],
+  "icon": "disc-3",
+  "url": "/mediaechoes/",
+  "source": "https://github.com/jsdyer/mediaechoes",
+  "hosting": "project",
+  "access": "browser",
+  "data_info": {
+    "mode": "live",
+    "detail": "Internet Archive returns catalogue records, previews and file lists when you search."
+  }
+}

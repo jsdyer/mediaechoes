@@ -30,6 +30,15 @@ jobs:
           fi
           python3 scripts/build.py
           test -s dist/index.html
+      - name: Check search and output behavior
+        run: node --test tests/*.test.mjs
+      - name: Test the browser workflow
+        run: |
+          python3 -m venv "$RUNNER_TEMP/browser-tests"
+          . "$RUNNER_TEMP/browser-tests/bin/activate"
+          python3 -m pip install playwright==1.59.0
+          python3 -m playwright install --with-deps chromium
+          python3 tests/browser_smoke.py
       - uses: actions/upload-pages-artifact@v4
         with:
           path: dist

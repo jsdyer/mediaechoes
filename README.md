@@ -2,7 +2,12 @@
 
 Search forgotten software, Flash projects, CDs, games, videos and images in the Internet Archive. View original catalogue information, previews, and file names, then open the source item to see what can be viewed or downloaded.
 
-Use a title, creator, subject, or a phrase in quotes. Select a media collection and catalogue date range. Canada-related searches match catalogue text and can include material about Canada or from Canadian institutions; they do not establish production origin. Catalogue dates can differ from original release dates and are optional.
+Search defaults to titles. Choose all catalogue fields, creator, subject or archive identifier, then match all words or a phrase. Combine filters for a creator phrase, collection identifier, excluded words or phrases, and a custom year interval. Custom years override a date preset. All criteria are sent to Internet Archive before pagination. The browser address and the official search link preserve the criteria.
+
+<!-- coolcode:guide -->
+Use Encarta software · 1995 to narrow the search to software records with Encarta in the title and a catalogue date in 1995. The source search included Microsoft Encarta ’95 (1995 MPEG Edition), identifier encarta95. Inspect its files or refine the search by creator. The Myst software · 1993 and Homestar Runner · Flash shortcuts also combine title and collection or year filters.
+<!-- /coolcode:guide -->
+ Canada-related searches match catalogue text and can include material about Canada or from Canadian institutions; they do not establish production origin. Catalogue dates can differ from original release dates and are optional.
 
 ## Build
 

@@ -1,4 +1,4 @@
-import { catalogueDate, excerpt, fileEntries, filesUrl, itemUrl, maxPages, metadataUrl, perPage, periods, safeLink, scopes, searchUrls, sorts, strings, thumbUrl, validIdentifier } from "./model.mjs";
+import { catalogueDate, excerpt, fileEntries, filesUrl, itemUrl, maxPages, metadataUrl, perPage, periods, safeLink, scopes, searchFields, searchUrls, sorts, strings, thumbUrl, validIdentifier } from "./model.mjs";
 
 const get = id => document.getElementById(id);
 const form = get("search-form");
@@ -7,7 +7,7 @@ const results = get("results");
 const dialog = get("details");
 const detail = get("detail-body");
 const formatCount = new Intl.NumberFormat("en-CA");
-const controls = ["query", "scope", "era", "sort"];
+const controls = ["query", "scope", "era", "sort", "field", "phrase", "creator", "collection", "exclude", "from", "to"];
 let request;
 let detailRequest;
 let activeFilters;
@@ -65,17 +65,18 @@ function filters() {
 }
 
 function restore(hash) {
-  const choices = { scope: scopes, era: periods, sort: sorts };
+  const choices = { scope: scopes, era: periods, sort: sorts, field:searchFields, phrase:{words:true,phrase:true} };
+  if (!hash.has("field") && hash.size) get("field").value = "all";
   for (const id of controls) {
     const value = hash.get(id);
     if (!value) continue;
-    if (id === "query") get(id).value = value.slice(0, 180);
+    if (!choices[id]) get(id).value = value.slice(0, get(id).maxLength);
     else if (Object.hasOwn(choices[id], value)) get(id).value = value;
   }
 }
 
 function copySearchToAddress(f, p) {
-  const hash = new URLSearchParams(f);
+  const hash = new URLSearchParams(Object.entries(f).filter(([,value]) => value));
   if (p !== 1) hash.set("page", String(p));
   history.replaceState(null, "", "#" + hash.toString());
 }
@@ -111,6 +112,12 @@ function card(item) {
 }
 
 async function search(f, requestedPage = 1) {
+  let urls;
+  try { urls = searchUrls(f, requestedPage); }
+  catch (error) { setStatus(error.message, true); return; }
+  if (!f.query && !f.creator && !f.collection && !f.from && !f.to && f.era === 'all' && f.scope === 'all' && !f.exclude) {
+    setStatus('Enter a search term, choose a collection or add a year before searching.'); return;
+  }
   request?.abort();
   const controller = new AbortController();
   request = controller;
@@ -119,7 +126,7 @@ async function search(f, requestedPage = 1) {
   activeFilters = f;
   page = Math.min(maxPages, Math.max(1, Math.trunc(requestedPage) || 1));
   copySearchToAddress(f, page);
-  const urls = searchUrls(f, page);
+
   get("archive-search").href = urls.official.href;
   get("result-actions").hidden = false;
   form.setAttribute("aria-busy", "true");
@@ -138,7 +145,7 @@ async function search(f, requestedPage = 1) {
     } else {
       results.replaceChildren(...items.map(card));
     }
-    setStatus(formatCount.format(hits.numFound) + " catalogue match" + (hits.numFound === 1 ? "" : "es") + ". Showing " + items.length + " on this page.");
+    setStatus(formatCount.format(hits.numFound) + " catalogue match" + (hits.numFound === 1 ? "" : "es") + ". Showing " + items.length + " on this page." + (hits.numFound > 250 ? " Narrow the title, add a creator, or limit the years above." : ""));
     get("previous").disabled = page === 1;
     get("next").disabled = page >= pages;
     get("page-label").textContent = "Page " + page + " of " + Math.max(1, pages)
@@ -206,6 +213,12 @@ dialog.addEventListener("close", () => detailRequest?.abort());
 form.addEventListener("submit", event => { event.preventDefault(); search(filters()); });
 for (const preset of document.querySelectorAll("[data-scope]")) {
   preset.addEventListener("click", () => {
+    form.reset();
+    get("field").value = "title";
+    get("phrase").value = "phrase";
+    get("from").value = preset.dataset.from || "";
+    get("to").value = preset.dataset.to || "";
+    get("refine").open = Boolean(get("from").value);
     get("scope").value = preset.dataset.scope;
     get("query").value = preset.dataset.query || "";
     get("era").value = preset.dataset.era || "all";
@@ -217,4 +230,11 @@ get("previous").addEventListener("click", () => { if (page > 1) search(activeFil
 get("next").addEventListener("click", () => { if (page < pages) search(activeFilters, page + 1); });
 const initial = new URLSearchParams(location.hash.slice(1));
 restore(initial);
+get("refine").open = ["from","to","creator","collection","exclude"].some(id => get(id).value);
+get("clear-filters").addEventListener("click", () => {
+  request?.abort(); request = null; form.removeAttribute("aria-busy"); form.reset(); get("refine").open = false;
+  results.replaceChildren(); get("paging").hidden = get("result-actions").hidden = true;
+  history.replaceState(null,"",location.pathname + location.search);
+  setStatus("Enter a search term or use a focused search."); get("query").focus();
+});
 if (initial.has("query") || initial.has("scope")) search(filters(), Number(initial.get("page")));

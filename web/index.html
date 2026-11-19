@@ -20,16 +20,25 @@
   <main class="site" id="search">
     <section class="panel" aria-label="Search archive metadata">
       <form id="search-form" role="search">
-        <label for="query">Title, creator, or subject</label>
+        <label for="query">Search terms</label>
         <div class="search-row"><input type="search" id="query" maxlength="180" autocomplete="off" placeholder="Try &quot;encyclopedia&quot;, &quot;NFB&quot; or &quot;Flash game&quot;"><button class="primary" type="submit">Search archive</button></div>
         <div class="filters">
+          <div><label for="field">Look in</label><select id="field"><option value="all">All catalogue fields</option><option value="title" selected>Title</option><option value="creator">Creator</option><option value="subject">Subject</option><option value="identifier">Archive identifier</option></select></div>
+          <div><label for="phrase">Match</label><select id="phrase"><option value="words">All words</option><option value="phrase">Phrase in order</option></select></div>
           <div><label for="scope">Collection or media type</label><select id="scope"><option value="all">Software, video and images</option><option value="software">Software and games</option><option value="flash">Flash software library</option><option value="cdrom">CD-ROM software</option><option value="movies">Video and trailers</option><option value="images">Images</option></select></div>
           <div><label for="era">Catalogue date</label><select id="era"><option value="all">Any date</option><option value="through1989">Through 1989</option><option value="1990s">1990–1999</option><option value="2000s">2000–2009</option><option value="2010s">2010–2019</option><option value="since2020">2020 onward</option></select></div>
           <div><label for="sort">Sort by</label><select id="sort"><option value="relevance">Relevance</option><option value="views">Most viewed</option><option value="oldest">Earliest catalogue date</option><option value="newest">Latest catalogue date</option></select></div>
         </div>
-        <p class="fine">Use quotes for a phrase. A catalogue date can differ from the original release date; date filters omit undated items.</p>
+        <details id="refine"><summary>Refine by creator, years, collection or excluded words</summary><div class="filters">
+          <div><label for="creator">Creator contains phrase</label><input id="creator" maxlength="180" placeholder="e.g. Microsoft"></div>
+          <div><label for="from">From year</label><input id="from" inputmode="numeric" pattern="[1-9][0-9]{3}" maxlength="4" placeholder="1993"></div>
+          <div><label for="to">Through year</label><input id="to" inputmode="numeric" pattern="[1-9][0-9]{3}" maxlength="4" placeholder="1995"></div>
+          <div><label for="collection">Archive collection ID</label><input id="collection" maxlength="140" placeholder="e.g. cdromsoftware"></div>
+          <div><label for="exclude">Exclude words or quoted phrases</label><input id="exclude" maxlength="180" placeholder="e.g. trailer demo"></div>
+        </div><p class="fine">Custom years override the date preset. Catalogue dates can differ from release dates. A date limit omits undated items.</p></details>
+        <button class="secondary" type="button" id="clear-filters">Clear search</button>
       </form>
-      <div class="preset-bar" aria-label="Search suggestions"><span>Explore</span><button class="pill" type="button" data-scope="flash">Flash library</button><button class="pill" type="button" data-scope="cdrom" data-era="1990s">1990s CD-ROMs</button><button class="pill" type="button" data-scope="software" data-query="Canada">Canada-related software</button><button class="pill" type="button" data-scope="movies" data-query="&quot;game trailer&quot;">Game trailers</button></div>
+      <div class="preset-bar" aria-label="Focused searches"><span>Try a search</span><button class="pill" type="button" data-scope="software" data-query="Myst" data-from="1993" data-to="1993">Myst software · 1993</button><button class="pill" type="button" data-scope="software" data-query="Encarta" data-from="1995" data-to="1995">Encarta software · 1995</button><button class="pill" type="button" data-scope="flash" data-query="Homestar Runner">Homestar Runner · Flash</button></div>
     </section>
     <p id="status" class="status" role="status" aria-live="polite">Try a collection above or search for a title you remember.</p>
     <div id="result-actions" class="results-head" hidden><h2 id="results-heading">Archive matches</h2><a id="archive-search" target="_blank" rel="noopener noreferrer">Open search on Internet Archive ↗</a></div>

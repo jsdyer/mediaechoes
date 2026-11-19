@@ -34,15 +34,25 @@ export const thumbUrl = id => archive + "/services/img/" + encodeURIComponent(id
 export const metadataUrl = id => archive + "/metadata/" + encodeURIComponent(id);
 export const filesUrl = id => archive + "/download/" + encodeURIComponent(id) + "/";
 
-export function queryFor({ query = "", scope = "all", era = "all" }) {
+export const searchFields = {all:'', title:'title:', creator:'creator:', subject:'subject:', identifier:'identifier:'};
+const quote = text => '"' + text.replace(/[\u0000-\u001f]/g,' ').replace(/([\\"])/g,'\\$1') + '"';
+const words = text => [...text.slice(0,180).matchAll(/"([^"]+)"|([^\s"]+)/g)].slice(0,12).map(match => match[1] || match[2]);
+
+export function queryFor({query='',scope='all',era='all',field='all',phrase='',creator='',collection='',exclude='',from='',to=''}) {
   const clauses = [Object.hasOwn(scopes, scope) ? scopes[scope] : scopes.all];
-  if (Object.hasOwn(periods, era) && periods[era]) clauses.push("date:" + periods[era]);
-  for (const match of query.slice(0, 180).matchAll(/"([^"]+)"|([^\s"]+)/g)) {
-    const value = (match[1] ?? match[2]).replace(/[\u0000-\u001f]/g, " ").trim().replace(/\\/g, "\\\\");
-    if (value) clauses.push('"' + value + '"');
-    if (clauses.length >= 15) break;
-  }
-  return clauses.join(" AND ");
+  if (from || to) {
+    if ([from,to].some(y => y && !/^[1-9]\d{3}$/.test(y)) || (from && to && from > to)) {
+      throw Error('Use four-digit years and put the earlier year first.');
+    }
+    clauses.push('date:[' + (from ? from + '-01-01T00:00:00Z' : '*') + ' TO ' + (to ? to + '-12-31T23:59:59Z' : '*') + ']');
+  } else if (Object.hasOwn(periods, era) && periods[era]) clauses.push('date:' + periods[era]);
+  const prefix = Object.hasOwn(searchFields,field) ? searchFields[field] : '';
+  const terms = phrase === 'phrase' ? [query.trim().slice(0,180)].filter(Boolean) : words(query);
+  for (const value of terms) clauses.push(prefix + quote(value));
+  if (creator.trim()) clauses.push('creator:' + quote(creator.trim().slice(0,180)));
+  if (collection.trim()) clauses.push('collection:' + quote(collection.trim().slice(0,140)));
+  for (const term of words(exclude)) clauses.push('NOT ' + quote(term));
+  return clauses.join(' AND ');
 }
 
 export function searchUrls(filters, page) {
