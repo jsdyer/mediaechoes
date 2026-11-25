@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "perCollection": 6,
+  "collections": [
+    {
+      "id": "cold-war",
+      "label": "Cold War PSAs",
+      "query": "collection:prelinger AND mediatype:movies AND (title:\"Duck and Cover\" OR title:\"Atomic Alert\" OR title:\"Survival Under Atomic Attack\" OR title:\"Our Cities Must Fight\")"
+    },
+    {
+      "id": "industry",
+      "label": "Industry & work",
+      "query": "collection:prelinger AND mediatype:movies AND (title:\"American Harvest\" OR title:\"Telegram for America\" OR title:\"A Case of Spring Fever\" OR title:\"Story of a Star\")"
+    },
+    {
+      "id": "education",
+      "label": "Educational shorts",
+      "query": "collection:prelinger AND mediatype:movies AND (title:\"A Date with Your Family\" OR title:\"Journalism\" OR title:\"Your Social Security\" OR title:\"School Spirit\")"
+    },
+    {
+      "id": "travel",
+      "label": "Historical travel",
+      "query": "collection:prelinger AND mediatype:movies AND (title:\"Alaska\" OR title:\"Canada\" OR title:\"Vacation\" OR title:\"Travel\")"
+    }
+  ]
+}

@@ -80,3 +80,5 @@ dialog::backdrop{background:#17201cbb}
 #refine{margin:.9rem 0}
 #refine summary{cursor:pointer;font-weight:650}
 .filters input{width:100%;min-width:0}
+
+.reels-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:1rem;margin-top:1.5rem}.reel-card{padding:1rem;border:1px solid #81958b;border-radius:8px;min-width:0}.reel-card h3{margin:.5rem 0}.reel-card p{font-size:.9rem}.reel-card .actions{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem}#reels-player iframe{display:block;width:100%;aspect-ratio:16/9;border:0;margin:1rem 0}#reels-player{margin:1.5rem 0}#reels-saved{width:auto}#reels-import{max-width:240px}#reels-count{display:block}

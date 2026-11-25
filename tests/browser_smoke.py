@@ -19,7 +19,23 @@ with ThreadingHTTPServer(("127.0.0.1",0), partial(SimpleHTTPRequestHandler,direc
         def fixture(route):
             route.fulfill(json={'response':{'numFound':1,'docs':[{'identifier':'encarta95','title':"Microsoft Encarta '95 (1995 MPEG Edition)",'mediatype':'software','creator':'Microsoft'}]}})
         page.route('https://archive.org/advancedsearch.php*',fixture)
+        page.route('https://archive.org/embed/*',lambda route:route.fulfill(body='<p>Fixture player</p>',content_type='text/html'))
         page.goto(base + '/')
+        page.locator('#reels-list article').first.wait_for()
+        assert page.locator('#reels-player iframe').count() == 0
+        page.locator('#reels-group').select_option('cold-war')
+        assert page.locator('#reels-list article').count() > 0
+        page.get_by_role('button',name='Save to playlist',exact=True).first.click()
+        page.locator('#reels-saved').check()
+        assert page.locator('#reels-list article').count() == 1
+        page.get_by_role('button',name='Shuffle a film',exact=True).click()
+        page.locator('#reels-player iframe').wait_for()
+        with page.expect_download() as downloaded:
+            page.locator('#reels-export').click()
+        assert downloaded.value.suggested_filename == 'mediaechoes-playlist.json'
+        page.reload()
+        page.locator('#reels-list article').first.wait_for()
+        assert '1 saved' in page.locator('#reels-count').inner_text()
         page.get_by_role('button',name='Encarta software · 1995').click()
         page.get_by_text("Microsoft Encarta '95 (1995 MPEG Edition)").wait_for()
         assert 'title%3A%22Encarta%22' in page.locator('#archive-search').get_attribute('href')

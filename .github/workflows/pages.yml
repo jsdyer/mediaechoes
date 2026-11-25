@@ -31,7 +31,9 @@ jobs:
           python3 scripts/build.py
           test -s dist/index.html
       - name: Check search and output behavior
-        run: node --test tests/*.test.mjs
+        run: |
+          node --test tests/*.test.mjs
+          python3 -m unittest discover -s tests -v
       - name: Test the browser workflow
         run: |
           python3 -m venv "$RUNNER_TEMP/browser-tests"

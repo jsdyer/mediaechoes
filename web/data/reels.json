@@ -1,0 +1,188 @@
+{
+  "schema": "mediaechoes.reels.v1",
+  "checkedAt": "2026-11-25T13:04:42.543131+00:00",
+  "records": [
+    {
+      "id": "DuckandC1951",
+      "title": "Duck and Cover",
+      "year": "1951",
+      "creator": "Archer Productions, Inc.",
+      "rightsUrl": "https://creativecommons.org/licenses/publicdomain/",
+      "rightsLabel": "Public-domain designation recorded by Internet Archive",
+      "groups": [
+        "cold-war"
+      ],
+      "source": "https://archive.org/details/DuckandC1951",
+      "checkedAt": "2026-11-25T13:04:42.543131+00:00"
+    },
+    {
+      "id": "Survival1951",
+      "title": "Survival Under Atomic Attack",
+      "year": "1951",
+      "creator": "U.S. Office of Civil Defense",
+      "rightsUrl": "https://creativecommons.org/licenses/publicdomain/",
+      "rightsLabel": "Public-domain designation recorded by Internet Archive",
+      "groups": [
+        "cold-war"
+      ],
+      "source": "https://archive.org/details/Survival1951",
+      "checkedAt": "2026-11-25T13:04:42.543131+00:00"
+    },
+    {
+      "id": "AtomicAl1951",
+      "title": "Atomic Alert (Elementary version)",
+      "year": "1951",
+      "creator": "Encyclopaedia Britannica Films",
+      "rightsUrl": "https://creativecommons.org/licenses/publicdomain/",
+      "rightsLabel": "Public-domain designation recorded by Internet Archive",
+      "groups": [
+        "cold-war"
+      ],
+      "source": "https://archive.org/details/AtomicAl1951",
+      "checkedAt": "2026-11-25T13:04:42.543131+00:00"
+    },
+    {
+      "id": "OurCitie1951",
+      "title": "Our Cities Must Fight",
+      "year": "1951",
+      "creator": "Archer Productions, Inc.",
+      "rightsUrl": "https://creativecommons.org/licenses/publicdomain/",
+      "rightsLabel": "Public-domain designation recorded by Internet Archive",
+      "groups": [
+        "cold-war"
+      ],
+      "source": "https://archive.org/details/OurCitie1951",
+      "checkedAt": "2026-11-25T13:04:42.543131+00:00"
+    },
+    {
+      "id": "American1955",
+      "title": "American Harvest (Part I)",
+      "year": "1955",
+      "creator": "Handy (Jam) Organization",
+      "rightsUrl": "https://creativecommons.org/licenses/publicdomain/",
+      "rightsLabel": "Public-domain designation recorded by Internet Archive",
+      "groups": [
+        "industry"
+      ],
+      "source": "https://archive.org/details/American1955",
+      "checkedAt": "2026-11-25T13:04:42.543131+00:00"
+    },
+    {
+      "id": "Telegram1956",
+      "title": "Telegram for America",
+      "year": "1956",
+      "creator": "Transfilm",
+      "rightsUrl": "https://creativecommons.org/licenses/publicdomain/",
+      "rightsLabel": "Public-domain designation recorded by Internet Archive",
+      "groups": [
+        "industry"
+      ],
+      "source": "https://archive.org/details/Telegram1956",
+      "checkedAt": "2026-11-25T13:04:42.543131+00:00"
+    },
+    {
+      "id": "Storyofa1956",
+      "title": "Story of a Star, The",
+      "year": "1956",
+      "creator": "Audio Productions, Inc.",
+      "rightsUrl": "https://creativecommons.org/licenses/publicdomain/",
+      "rightsLabel": "Public-domain designation recorded by Internet Archive",
+      "groups": [
+        "industry"
+      ],
+      "source": "https://archive.org/details/Storyofa1956",
+      "checkedAt": "2026-11-25T13:04:42.543131+00:00"
+    },
+    {
+      "id": "American1955_2",
+      "title": "American Harvest (Part II)",
+      "year": "1955",
+      "creator": "Handy (Jam) Organization",
+      "rightsUrl": "https://creativecommons.org/licenses/publicdomain/",
+      "rightsLabel": "Public-domain designation recorded by Internet Archive",
+      "groups": [
+        "industry"
+      ],
+      "source": "https://archive.org/details/American1955_2",
+      "checkedAt": "2026-11-25T13:04:42.543131+00:00"
+    },
+    {
+      "id": "Journali1940",
+      "title": "Journalism",
+      "year": "1940",
+      "creator": "Holmes (Burton) Films, Inc.",
+      "rightsUrl": "https://creativecommons.org/licenses/publicdomain/",
+      "rightsLabel": "Public-domain designation recorded by Internet Archive",
+      "groups": [
+        "education"
+      ],
+      "source": "https://archive.org/details/Journali1940",
+      "checkedAt": "2026-11-25T13:04:42.543131+00:00"
+    },
+    {
+      "id": "YourSoci1940",
+      "title": "Your Social Security",
+      "year": "1940",
+      "creator": "Warner News Inc.",
+      "rightsUrl": "https://creativecommons.org/licenses/publicdomain/",
+      "rightsLabel": "Public-domain designation recorded by Internet Archive",
+      "groups": [
+        "education"
+      ],
+      "source": "https://archive.org/details/YourSoci1940",
+      "checkedAt": "2026-11-25T13:04:42.543131+00:00"
+    },
+    {
+      "id": "WhatAbou1958",
+      "title": "What About School Spirit?",
+      "year": "1958",
+      "creator": "Centron Corporation",
+      "rightsUrl": "https://creativecommons.org/licenses/publicdomain/",
+      "rightsLabel": "Public-domain designation recorded by Internet Archive",
+      "groups": [
+        "education"
+      ],
+      "source": "https://archive.org/details/WhatAbou1958",
+      "checkedAt": "2026-11-25T13:04:42.543131+00:00"
+    },
+    {
+      "id": "AlaskaAM1948",
+      "title": "Alaska: A Modern Frontier (Revised edition)",
+      "year": "1948",
+      "creator": "Coronet Instructional Films",
+      "rightsUrl": "https://creativecommons.org/licenses/publicdomain/",
+      "rightsLabel": "Public-domain designation recorded by Internet Archive",
+      "groups": [
+        "travel"
+      ],
+      "source": "https://archive.org/details/AlaskaAM1948",
+      "checkedAt": "2026-11-25T13:04:42.543131+00:00"
+    },
+    {
+      "id": "EskimosW1950",
+      "title": "Eskimos: Winter in Western Alaska",
+      "year": "1950",
+      "creator": "Machetanz (Frederick and Sara)",
+      "rightsUrl": "https://creativecommons.org/licenses/publicdomain/",
+      "rightsLabel": "Public-domain designation recorded by Internet Archive",
+      "groups": [
+        "travel"
+      ],
+      "source": "https://archive.org/details/EskimosW1950",
+      "checkedAt": "2026-11-25T13:04:42.543131+00:00"
+    },
+    {
+      "id": "TravelCi1947",
+      "title": "[Amateur film: \"Travel/Cities\"]",
+      "year": "1947",
+      "creator": "Unknown",
+      "rightsUrl": "https://creativecommons.org/licenses/publicdomain/",
+      "rightsLabel": "Public-domain designation recorded by Internet Archive",
+      "groups": [
+        "travel"
+      ],
+      "source": "https://archive.org/details/TravelCi1947",
+      "checkedAt": "2026-11-25T13:04:42.543131+00:00"
+    }
+  ]
+}
